@@ -18,7 +18,8 @@ if ( '/robots.txt' == $_SERVER['REQUEST_URI'] ) {
 require_once __DIR__ . '/includes/load-yourls.php';
 
 // Get request in YOURLS base (eg in 'http://sho.rt/yourls/abcd' get 'abdc')
-$request = yourls_get_request();
+// $request = yourls_get_request(); // why do like this?
+$request = ltrim($_SERVER['REQUEST_URI'],'/');
 
 // Make valid regexp pattern from authorized charset in keywords
 $pattern = yourls_make_regexp_pattern( yourls_get_shorturl_charset() );
